@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
+import os
 
 
 
@@ -47,5 +48,7 @@ def SNOTELPlots(sitedict, gdf_in_bbox, WY, watershed, plot = True):
     plt.tight_layout()
 
     if plot == True:
+        if not os.path.exists('Figures'):
+            os.makedirs('Figures')
         fig.savefig(f"Figures/{watershed}_{WY}_snotelanalysis.png",  dpi = 600, bbox_inches='tight')
 
