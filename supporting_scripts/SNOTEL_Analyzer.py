@@ -1,12 +1,13 @@
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import os
+import pandas as pd
 
 
 
-def SNOTELPlots(sitedict, gdf_in_bbox, WY, watershed, plot = True):
+def SNOTELPlots(sitedict, gdf_in_bbox, WY, watershed, AOI, DOI,plot = True):
 
-    title = f'Snow Outlook for Tuolumne River Basin \n Above Hetch Hetchy Reservoir for WY {WY}'
+    title = f'Snow Outlook for {watershed} Basin \n {AOI} for WY {WY}'
 
 
 
@@ -36,15 +37,44 @@ def SNOTELPlots(sitedict, gdf_in_bbox, WY, watershed, plot = True):
             axs[i].fill_between(df.index, df['Q10'], df['min'], color = 'red', alpha = opacity, label = 'Q10')
 
             #Plotting year of interest
-            axs[i].plot(df[f"{WY}_SWE_in"], color = 'black')
+            axs[i].plot(df[f"{WY}_SWE_in"], color = 'black', label = f"WY {WY}")
+
+              # Plot vertical line at a specific date
+            axs[i].axvline(DOI, color='black', linestyle='--')
+
 
             axs[i].xaxis.set_major_locator(ticker.MaxNLocator(4))
             axs[i].tick_params(labelrotation=45)
             handles, labels = axs[i].get_legend_handles_labels()
+
+            # Add text box in the upper left portion of the subplot
+            mpeak = max(df['median'])
+            doivalue = df.loc[DOI, f"{WY}_SWE_in"] if DOI in df.index else None
+            doimed = df.loc[DOI, 'median'] if DOI in df.index else None
+
+
+            medpercPeak = round(doivalue/mpeak *100, 0)
+            medperc = round(doivalue/doimed *100, 0)
+
+            # medpeak = 
+            # dpeak = 
+            # percentile = 
+            textstr = f"DOI: {WY}-{DOI} \n % of median - {medperc}%  \n % of median peak - {medpercPeak}% "# \n Days from Median Peak - {dpeak} \n Percentile - {percentile}"
+            props = dict(boxstyle='round', facecolor='white', alpha=0.5)
+            axs[i].text(0.05, 0.95, textstr, transform=axs[i].transAxes, fontsize=8,
+                    verticalalignment='top', bbox=props)
+
+
         else:
             axs[i].annotate('No Data', xy=(0.45, 0.45), xytext=(0.45, 0.45))
+
+         # Set axis labels
+        axs[i].set_xlabel('Date')
+        axs[i].set_ylabel('SWE (inches)')
+
+ 
             
-    fig.legend(handles, labels,loc='lower center',ncol=7, bbox_to_anchor=(.5, -.05))
+    fig.legend(handles, labels,loc='lower center',ncol=8, bbox_to_anchor=(.5, -.05))
     plt.tight_layout()
 
     if plot == True:
