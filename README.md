@@ -9,4 +9,4 @@ Please review the [Getting Started](getting_started.md) page to assist with sett
 
 Funding to support this research was awarded to the Cooperative Institute for Research to Operations in Hydrology (CIROH) through the NOAA Cooperative Agreement with The University of Alabama (NA22NWS4320003).
 
-![SNOTEL](/Images/REadmefigs.png)
+![Support](/Images/REadmefigs.png)
