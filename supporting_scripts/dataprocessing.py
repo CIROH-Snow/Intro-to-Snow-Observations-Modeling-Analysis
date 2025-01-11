@@ -31,7 +31,7 @@ def processSNOTEL(site, stateab):
                 WYsitedf.insert(0,'M',wydf['M'])
                 WYsitedf.insert(1,'D',wydf['D'])
             except:
-                print('')
+                pass
     #WYsitedf.fillna(0)
 
     #remove July, August, September
