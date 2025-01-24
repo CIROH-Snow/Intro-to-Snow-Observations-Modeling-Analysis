@@ -2,33 +2,90 @@ name: HydroLearnEnv
 channels:
   - conda-forge
 dependencies:
-  - _libgcc_mutex=0.1=conda_forge
+  - _libgcc_mutex=0.1
   - _openmp_mutex=4.5
+  - aom=3.9.1
+  - blosc=1.21.6
   - bzip2=1.0.8
+  - c-ares=1.34.4
   - ca-certificates=2024.12.14
+  - dav1d=1.2.1
+  - freexl=2.0.0
+  - gdal=3.10.0
+  - geos=3.13.0
+  - geotiff=1.7.3
+  - giflib=5.2.2
+  - icu=75.1
+  - json-c=0.18
+  - keyutils=1.6.1
+  - krb5=1.21.3
   - ld_impl_linux-64=2.43
+  - lerc=4.0.0
+  - libarchive=3.7.7
+  - libavif16=1.1.1
+  - libblas=3.9.0
+  - libcblas=3.9.0
+  - libcurl=8.11.1
+  - libde265=1.0.15
+  - libdeflate=1.23
+  - libedit=3.1.20240808
+  - libev=4.33
+  - libexpat=2.6.4
   - libffi=3.4.2
   - libgcc=14.2.0
   - libgcc-ng=14.2.0
+  - libgdal-core=3.10.0
+  - libgfortran=14.2.0
+  - libgfortran5=14.2.0
   - libgomp=14.2.0
+  - libheif=1.19.5
+  - libiconv=1.17
+  - libjpeg-turbo=3.0.0
+  - libkml=1.3.0
+  - liblapack=3.9.0
   - liblzma=5.6.3
   - liblzma-devel=5.6.3
+  - libnghttp2=1.64.0
   - libnsl=2.0.1
+  - libopenblas=0.3.28
+  - libpng=1.6.45
+  - librttopo=1.1.0
+  - libspatialite=5.1.0
   - libsqlite=3.47.2
+  - libssh2=1.11.1
+  - libstdcxx=14.2.0
+  - libstdcxx-ng=14.2.0
+  - libtiff=4.7.0
   - libuuid=2.38.1
+  - libwebp-base=1.5.0
+  - libxml2=2.13.5
   - libzlib=1.3.1
+  - lz4-c=1.10.0
+  - lzo=2.10
+  - minizip=4.0.7
   - ncurses=6.5
+  - numpy=2.2.1
   - openssl=3.4.0
+  - pcre2=10.44
   - pip=24.3.1
   - python=3.10.0
+  - python_abi=3.10
+  - rav1e=0.6.6
   - readline=8.2
   - setuptools=75.6.0
+  - snappy=1.2.1
   - sqlite=3.47.2
+  - svt-av1=2.3.0
   - tk=8.6.13
+  - uriparser=0.9.8
   - wheel=0.45.1
+  - x265=3.5
+  - xerces-c=3.2.5
   - xz=5.6.3
   - xz-gpl-tools=5.6.3
   - xz-tools=5.6.3
+  - zlib=1.3.1
+  - zstd=1.5.6
   - pip:
       - affine==2.4.0
       - aiobotocore==2.17.0
@@ -39,12 +96,23 @@ dependencies:
       - aioitertools==0.12.0
       - aiosignal==1.3.2
       - aiosqlite==0.20.0
+      - annotated-types==0.7.0
+      - anyio==4.8.0
+      - argon2-cffi==23.1.0
+      - argon2-cffi-bindings==21.2.0
+      - arrow==1.3.0
       - asciitree==0.3.3
+      - async-lru==2.0.4
       - async-retriever==0.18.0
       - async-timeout==5.0.1
       - attrs==24.3.0
+      - babel==2.16.0
+      - beautifulsoup4==4.12.3
+      - bleach==6.2.0
+      - bokeh==3.6.2
       - boto3==1.35.95
-      - botocore==1.35.95
+      - botocore==1.35.93
+      - bounded-pool-executor==0.0.3
       - branca==0.8.1
       - brotli==1.1.0
       - cattrs==24.1.2
@@ -55,60 +123,145 @@ dependencies:
       - click==8.1.8
       - click-plugins==1.1.1
       - cligj==0.7.2
+      - colorcet==3.1.0
+      - contextily==1.6.2
       - contourpy==1.3.1
       - cycler==0.12.1
       - cytoolz==1.0.1
       - defusedxml==0.7.1
+      - earthaccess==0.12.0
       - fasteners==0.19
+      - fastjsonschema==2.21.1
+      - fiona==1.10.1
       - folium==0.19.4
       - fonttools==4.55.3
+      - fqdn==1.5.1
       - frozenlist==1.5.0
       - fsspec==2024.12.0
+      - geographiclib==2.0
       - geopandas==1.0.1
+      - geopy==2.4.1
+      - h11==0.14.0
+      - holoviews==1.20.0
+      - httpcore==1.0.7
+      - httpx==0.28.1
+      - hvplot==0.11.2
+      - hydroeval==0.1.0
       - idna==3.10
+      - importlib-resources==6.5.2
+      - ipywidgets==8.1.5
+      - isoduration==20.11.0
       - itsdangerous==2.2.0
       - jinja2==3.1.5
       - jmespath==1.0.1
       - joblib==1.4.2
+      - json5==0.10.0
+      - jsonpointer==3.0.0
+      - jsonschema==4.23.0
+      - jsonschema-specifications==2024.10.1
+      - jupyter==1.1.1
+      - jupyter-console==6.6.3
+      - jupyter-events==0.11.0
+      - jupyter-lsp==2.2.5
+      - jupyter-server==2.15.0
+      - jupyter-server-terminals==0.5.3
+      - jupyterlab==4.3.4
+      - jupyterlab-pygments==0.3.0
+      - jupyterlab-server==2.27.3
+      - jupyterlab-widgets==3.0.13
       - kiwisolver==1.4.8
+      - linkify-it-py==2.0.3
       - lxml==5.3.0
+      - markdown==3.7
+      - markdown-it-py==3.0.0
       - markupsafe==3.0.2
       - matplotlib==3.10.0
+      - mdit-py-plugins==0.4.2
+      - mdurl==0.1.2
+      - mercantile==1.2.1
+      - mistune==3.1.0
       - multidict==6.1.0
+      - multimethod==2.0
+      - nbclient==0.10.2
+      - nbconvert==7.16.5
+      - nbformat==5.10.4
       - netcdf4==1.7.2
       - networkx==3.4.2
+      - notebook==7.3.2
+      - notebook-shim==0.2.4
       - numcodecs==0.13.1
-      - numpy==2.2.1
+      - overrides==7.7.0
       - owslib==0.32.0
       - pandas==2.2.3
+      - pandocfilters==1.5.1
+      - panel==1.6.0
+      - param==2.2.0
       - pillow==11.1.0
+      - planetary-computer==1.0.0
+      - pqdm==0.2.0
+      - proj==0.2.0
+      - prometheus-client==0.21.1
       - propcache==0.2.1
       - pyarrow==18.1.0
       - pycares==4.5.0
       - pycparser==2.22
+      - pydantic==2.10.5
+      - pydantic-core==2.27.2
       - pygeoogc==0.18.0
       - pygeoutils==0.18.0
       - pynhd==0.18.0
       - pyogrio==0.10.0
       - pyparsing==3.2.1
       - pyproj==3.7.0
+      - pystac==1.12.0
+      - pystac-client==0.8.5
+      - python-cmr==0.13.0
+      - python-dotenv==1.0.1
+      - python-json-logger==3.2.1
       - pytz==2024.2
+      - pyviz-comms==3.0.4
       - pyyaml==6.0.2
       - rasterio==1.4.3
+      - rasterstats==0.20.0
+      - referencing==0.35.1
       - requests==2.32.3
       - requests-cache==1.2.1
+      - rfc3339-validator==0.1.4
+      - rfc3986-validator==0.1.1
       - rioxarray==0.18.1
+      - rpds-py==0.22.3
       - s3fs==2024.12.0
       - s3transfer==0.10.4
+      - scikit-learn==1.6.1
       - scipy==1.15.0
+      - seaborn==0.13.2
+      - send2trash==1.8.3
       - shapely==2.0.6
+      - simplejson==3.19.3
+      - sniffio==1.3.1
+      - soupsieve==2.6
+      - terminado==0.18.1
+      - threadpoolctl==3.5.0
+      - tinycss2==1.4.0
+      - tinynetrc==1.3.1
+      - tomli==2.2.1
       - toolz==1.0.0
+      - tqdm==4.67.1
+      - types-python-dateutil==2.9.0.20241206
       - tzdata==2024.2
+      - uc-micro-py==1.0.3
       - ujson==5.10.0
+      - uri-template==1.3.0
       - url-normalize==1.4.3
       - urllib3==2.3.0
+      - vincent==0.4.4
+      - webcolors==24.11.1
+      - webencodings==0.5.1
+      - websocket-client==1.8.0
+      - widgetsnbextension==4.0.13
       - wrapt==1.17.0
       - xarray==2025.1.1
       - xyzservices==2024.9.0
       - yarl==1.18.3
       - zarr==2.18.3
+prefix: /home/whitelightning450/mambaforge/envs/HydroLearnEnv
