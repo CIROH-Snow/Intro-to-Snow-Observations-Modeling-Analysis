@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE GranuleMetaDataFile SYSTEM "http://ecsinfo.gsfc.nasa.gov/ECSInfo/ecsmetadata/dtds/DPL/ECS/ScienceGranuleMetadata.dtd">
+<GranuleMetaDataFile>
+    <DTDVersion>1.0</DTDVersion>
+    <DataCenterId>NSIDC</DataCenterId>
+    <GranuleURMetaData>
+        <GranuleUR>SC:ASO_50M_SWE.001:166802820</GranuleUR>
+        <DbID>166802820</DbID>
+        <InsertTime>2019-11-05 12:46:38.226</InsertTime>
+        <LastUpdate>2019-11-05 12:46:38.226</LastUpdate>
+        <CollectionMetaData>
+            <ShortName>ASO_50M_SWE</ShortName>
+            <VersionID>001</VersionID>
+        </CollectionMetaData>
+        <DataFiles>
+            <DataFileContainer>
+                <DistributedFileName>ASO_50M_SWE_USCAMB_20190716.tif</DistributedFileName>
+                <FileSize>2325199</FileSize>
+                <ChecksumType>MD5</ChecksumType>
+                <Checksum>6de3855697f0f7b487ced0c2a2440bdd</Checksum>
+                <ChecksumOrigin>DPLIngst</ChecksumOrigin>
+            </DataFileContainer>
+        </DataFiles>
+        <ECSDataGranule>
+            <SizeMBECSDataGranule>2.21748</SizeMBECSDataGranule>
+            <LocalGranuleID>ASO_50M_SWE_USCAMB_20190716.tif</LocalGranuleID>
+            <ProductionDateTime>2019-08-29 11:14:09.000</ProductionDateTime>
+        </ECSDataGranule>
+        <RangeDateTime>
+            <RangeEndingTime>23:59:59.590000</RangeEndingTime>
+            <RangeEndingDate>2019-07-16</RangeEndingDate>
+            <RangeBeginningTime>00:00:00.010000</RangeBeginningTime>
+            <RangeBeginningDate>2019-07-16</RangeBeginningDate>
+        </RangeDateTime>
+        <SpatialDomainContainer>
+            <HorizontalSpatialDomainContainer>
+                <GPolygon>
+                    <Boundary>
+                        <Point>
+                            <PointLongitude>-119.7244</PointLongitude>
+                            <PointLatitude>37.90341</PointLatitude>
+                        </Point>
+                        <Point>
+                            <PointLongitude>-119.25787</PointLongitude>
+                            <PointLatitude>37.91329</PointLatitude>
+                        </Point>
+                        <Point>
+                            <PointLongitude>-119.24821</PointLongitude>
+                            <PointLatitude>37.59492</PointLatitude>
+                        </Point>
+                        <Point>
+                            <PointLongitude>-119.71275</PointLongitude>
+                            <PointLatitude>37.58515</PointLatitude>
+                        </Point>
+                    </Boundary>
+                </GPolygon>
+            </HorizontalSpatialDomainContainer>
+        </SpatialDomainContainer>
+        <Platform>
+            <PlatformShortName>King Air</PlatformShortName>
+            <Instrument>
+                <InstrumentShortName>Riegl LMS-Q1560</InstrumentShortName>
+                <Sensor>
+                    <SensorShortName>Riegl LMS-Q1560</SensorShortName>
+                </Sensor>
+            </Instrument>
+        </Platform>
+        <PSAs>
+            <PSA>
+                <PSAName>SIPSMetGenVersion</PSAName>
+                <PSAValue>2.5</PSAValue>
+            </PSA>
+        </PSAs>
+    </GranuleURMetaData>
+</GranuleMetaDataFile>
+
