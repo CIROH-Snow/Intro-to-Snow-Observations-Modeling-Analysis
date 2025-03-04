@@ -158,6 +158,20 @@ def SWE_diff(basinname, output_res, medianSWEfile, WYSWEfile, decround, swedifff
     #Calculate the difference between the median SWE and the year of interest
     df['SWE_diff_in'] = df['swe_in'] - df['median_SWE_in']
     df['SWE_diff_m'] = df['SWE_diff_in'] / 39.3701
+    Perc = []
+    for index, row in df.iterrows():
+            
+            perc = (row['SWE_diff_in']/row['median_SWE_in'])*100
+            if perc == float('inf'):
+                perc = (row['SWE_diff_in']/1)*100
+            Perc.append(perc)
+    Perc = [round(i,0) for i in Perc]
+
+    df['SWE_perc_norm'] = Perc
+
+    #limit the percent difference to 500%
+    df['SWE_perc_norm'][df['SWE_perc_norm']>500] = 500
+    df['SWE_perc_norm'][df['SWE_perc_norm']<-500] = -500
 
     if save == True:
         df.to_parquet(f"files/ASO/{basinname}/{output_res}M_SWE_parquet/{swedifffilename}")
