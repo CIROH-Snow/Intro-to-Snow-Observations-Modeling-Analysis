@@ -229,6 +229,26 @@ def SpatialAnalysis(files, basinname, output_res, markersize, cmap, var,variant,
                     legend_kwds={"label": 'Snow Water Equivalent (in)', "orientation": "vertical"},
                     cmap = cmap,
                     )
+        if var == 'SWE_perc_norm':
+            vmin = Pred_Geo['SWE_perc_norm'].min()
+            vcen = 0
+            vmax = Pred_Geo['SWE_perc_norm'].max()
+
+            if vmin>=vcen:
+                vmin = -abs(vmax)
+            if vmax<= vcen:
+                vmax = abs(vmin)
+
+            norm = mcolors.TwoSlopeNorm(vmin=vmin, vcenter=vcen, vmax=vmax)
+            Pred_Geo.plot(column=var,
+                    ax = ax,
+                    legend=True,
+                    markersize=markersize,
+                    marker = 's',
+                    legend_kwds={"label": 'Percentage Difference (%)', "orientation": "vertical"},
+                    cmap = cmap,
+                    norm = norm
+                    )
         if var == 'swe_m':
             Pred_Geo.plot(column=var,
                     ax = ax,
@@ -613,6 +633,18 @@ def barplot(EvalDF, incols, outcols, output_res, ncol, Title, save, figname):
         highdf = df[df['Elevation_ft']>mid]
         output_res = output_res*3.28084
 
+    if incols[0] == 'SWE_perc_norm':
+        df['Elevation_ft'] = df['Elevation_m']*3.28084
+        Elevation_range = df['Elevation_ft'].max()-df['Elevation_ft'].min()
+        Etier = Elevation_range/3
+        low = int(round(df['Elevation_ft'].min()+Etier,0))
+        mid =  int(round(df['Elevation_ft'].min()+(2*Etier),0))
+
+        lowdf = df[df['Elevation_ft']<low]
+        middf = df[(df['Elevation_ft']>low) & (df['Elevation_ft']<mid)]
+        highdf = df[df['Elevation_ft']>mid]
+        output_res = output_res*3.28084
+
     lowobs = len(lowdf)
     midobs = len(middf)
     highobs = len(highdf)
@@ -626,18 +658,24 @@ def barplot(EvalDF, incols, outcols, output_res, ncol, Title, save, figname):
     middf['Median_Volume'] = middf[incols[0]]*midobs*output_res*output_res
     highdf['Median_Volume'] = highdf[incols[0]]*highobs*output_res*output_res
 
-    lowdf['Observed_Volume'] = lowdf[incols[1]]*lowobs*output_res*output_res
-    middf['Observed_Volume'] = middf[incols[1]]*midobs*output_res*output_res
-    highdf['Observed_Volume'] = highdf[incols[1]]*highobs*output_res*output_res
+    if len(incols)>1:
+        lowdf['Observed_Volume'] = lowdf[incols[1]]*lowobs*output_res*output_res
+        middf['Observed_Volume'] = middf[incols[1]]*midobs*output_res*output_res
+        highdf['Observed_Volume'] = highdf[incols[1]]*highobs*output_res*output_res
+        tierdf['Volume_Difference'] = tierdf['Observed_Volume']-tierdf['Median_Volume']
 
     tierdf = pd.concat([lowdf, middf, highdf])
     
-    tierdf['Volume_Difference'] = tierdf['Observed_Volume']-tierdf['Median_Volume']
+    
+
+    display(tierdf)
 
     #tierdf =round(tierdf, 0)
     if incols[0] == 'median_SWE_m':
         tierdf['Elevation_Range'] = [f"Below {low}m", f"{low}m - {mid}m", f"Above {mid}m"] #set elevation ranges in meters
     if incols[0] == 'median_SWE_in':
+        tierdf['Elevation_Range'] = [f"Below {low}ft", f"{low}ft - {mid}ft", f"Above {mid}ft"] #set elevation ranges in feet
+    if incols[0] == 'SWE_perc_norm':
         tierdf['Elevation_Range'] = [f"Below {low}ft", f"{low}ft - {mid}ft", f"Above {mid}ft"] #set elevation ranges in feet
 
     if incols[0] == 'median_SWE_in' and outcols[1] == 'Median_Volume':
@@ -654,6 +692,8 @@ def barplot(EvalDF, incols, outcols, output_res, ncol, Title, save, figname):
         ylab = f'Average SWE (in)'
     if outcols[0] == 'median_SWE_m':
         ylab = f'Average SWE (m)'
+    if outcols[0] == 'SWE_perc_norm':
+        ylab = f'Percent of Median (%)'
  
 
     tierdf.set_index('Elevation_Range', inplace=True)
