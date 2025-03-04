@@ -632,7 +632,7 @@ def barplot(EvalDF, incols, outcols, output_res, ncol, Title, save, figname):
 
     tierdf = pd.concat([lowdf, middf, highdf])
     
-    tierdf['Volume_Difference'] = tierdf['Median_Volume']-tierdf['Observed_Volume']
+    tierdf['Volume_Difference'] = tierdf['Observed_Volume']-tierdf['Median_Volume']
 
     #tierdf =round(tierdf, 0)
     if incols[0] == 'median_SWE_m':
@@ -662,7 +662,6 @@ def barplot(EvalDF, incols, outcols, output_res, ncol, Title, save, figname):
 
     if incols[0] == 'median_SWE_m' and outcols[1] == 'Median_Volume':
         df = df/scaler
-
     #f, ax = plt.subplots(nrows=1, ncols=1, figsize=(6, 6))
     ax = df.plot.bar(rot=0)
     ax.set_ylabel(ylab)
