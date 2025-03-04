@@ -127,16 +127,24 @@ def Spatial_median_SWE_df(output_res, basinname, begdate, enddate, filename, dec
 
     return MedianSWE_df
 
-def SWE_diff(basinname, output_res, medianSWEfile, WYSWEfile, swedifffilename, save =True):
+def SWE_diff(basinname, output_res, medianSWEfile, WYSWEfile, decround, swedifffilename, save =True):
     #load the median SWE data
     MedianSWE_df = pd.read_parquet(f"files/ASO/{basinname}/{output_res}M_SWE_parquet/{medianSWEfile}")
     MedianSWE_df.set_index('location', inplace = True)
 
     #load year of interest
     yeardf = pd.read_parquet(f"files/ASO/{basinname}/{output_res}M_SWE_parquet/{WYSWEfile}")
-    yeardf.rename(columns = {'cell_id': 'location'}, inplace = True)
+
+    #need to round only to 2 decimal places for the location
+    locations = []
+    for index, row in yeardf.iterrows():
+            location = f"{basinname}_{output_res}M_{round(row['cen_lat'],decround)}_{round(row['cen_lon'],decround)}"
+            locations.append(location)
+    yeardf['location'] = locations
+    yeardf = yeardf.drop_duplicates(subset=['location'], keep='first').copy()
+    #yeardf.rename(columns = {'cell_id': 'location'}, inplace = True)
     yeardf.set_index('location', inplace = True)
-    dropcols = ['cen_lat', 'cen_lon']
+    dropcols = ['cen_lat', 'cen_lon', 'cell_id']
     yeardf = yeardf.drop(columns = dropcols)
     yeardf['swe_in'] = yeardf['swe_m'] * 39.3701
 
@@ -145,6 +153,7 @@ def SWE_diff(basinname, output_res, medianSWEfile, WYSWEfile, swedifffilename, s
 
     #drop rows without a swe observation
     df = df.dropna(subset = ['swe_in'])
+    df = df.dropna(subset = ['median_SWE_in'])
 
     #Calculate the difference between the median SWE and the year of interest
     df['SWE_diff_in'] = df['swe_in'] - df['median_SWE_in']
