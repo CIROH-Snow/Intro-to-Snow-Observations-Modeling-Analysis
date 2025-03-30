@@ -42,9 +42,9 @@ Since we will be using Jupyter Notebooks for this exercise, we will use the Anac
 We suggest using Mamba rather than conda for installs, conda may be used but will take longer.
 In the command line type: 
 
-    mamba env create -f HydrlearnSnowEnv.yml 
+    mamba env create -f HydroLearnEnv.yml
 
-    conda activate HydrlearnSnowEnv
+    conda activate HydrolearnEnv
 
-    python -m ipykernel install --user --name=HydrlearnSnowEnv
+    python -m ipykernel install --user --name=HydrolearnEnv
 
