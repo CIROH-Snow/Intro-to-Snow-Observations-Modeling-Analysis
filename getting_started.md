@@ -44,7 +44,7 @@ In the command line type:
 
     mamba env create -f HydroLearnEnv.yml
 
-    conda activate HydrolearnEnv
+    conda activate HydroLearnEnv
 
-    python -m ipykernel install --user --name=HydrolearnEnv
+    python -m ipyk-ernel install -user --name=HydroLearnEnv --display-name "HydroLearnEnv"
 
