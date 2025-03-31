@@ -15,8 +15,13 @@ from holoviews import opts
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import xyzservices.providers as xyz
 from scipy.stats import pearsonr, spearmanr
 pd.options.mode.chained_assignment = None
+
+import geoviews as gv
+import geoviews.tile_sources as gts
+gv.extension('bokeh')
 
 def getSNOTELData(SiteName, SiteID, StateAbb, StartDate, EndDate, OutputFolder):
 	url1 = 'https://wcc.sc.egov.usda.gov/reportGenerator/view_csv/customMultiTimeSeriesGroupByStationReport/daily/start_of_period/'
@@ -526,11 +531,11 @@ def plot_grid_vector_data(ds_clip, data_var, time_index, shp, sites):
     clipped = da.rio.reproject("EPSG:4326")
     clipped = clipped.rename({'x': 'longitude', 'y': 'latitude'})
     hvplot_map = clipped.hvplot(
-    x='longitude', y='latitude',        # specify coordinate names for x and y axes
-    geo=True, project=True,             # treat axes as geographic coordinates
-    tiles='EsriWorldTopo',              # add a basemap (e.g., CartoLight or OSM)
-    cmap='kbc', frame_height=400, alpha=0.6,
-    title='Modeled Snow Water Equivalent (mm)'
+        x='longitude', y='latitude',        # specify coordinate names for x and y axes
+        geo=True, project=True,             # treat axes as geographic coordinates
+        tiles=gts.ESRI,        
+        cmap='kbc', frame_height=400, alpha=0.6,
+        title='Modeled Snow Water Equivalent (mm)'
     )
 
     # Plot the shapefile outline
@@ -577,7 +582,7 @@ def plot_grid_vector_monthly_data(ds_clip, data_var, shp, sites):
         base_plot = clipped.sel(time=t).hvplot(
             x='longitude', y='latitude',
             geo=True, project=True,
-            tiles='EsriWorldTopo',
+            tiles=gts.ESRI,
             title=f'SWE (mm) on {pd.to_datetime(t).strftime("%Y-%m-%d")}',
             frame_height=200, frame_width=300
         )
