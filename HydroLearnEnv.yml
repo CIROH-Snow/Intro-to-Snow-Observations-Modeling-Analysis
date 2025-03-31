@@ -9,6 +9,9 @@ dependencies:
   - bzip2=1.0.8
   - c-ares=1.34.4
   - ca-certificates=2024.12.14
+  - dask
+  - dask-core
+  - distributed
   - dav1d=1.2.1
   - freexl=2.0.0
   - gdal=3.10.0
@@ -88,7 +91,7 @@ dependencies:
   - zstd=1.5.6
   - pip:
       - affine==2.4.0
-      - aiobotocore==2.17.0
+      - aiobotocore
       - aiodns==3.2.0
       - aiohappyeyeballs==2.4.4
       - aiohttp==3.11.11
@@ -110,7 +113,7 @@ dependencies:
       - beautifulsoup4==4.12.3
       - bleach==6.2.0
       - bokeh==3.6.2
-      - boto3==1.35.95
+      - boto3
       - botocore==1.35.93
       - bounded-pool-executor==0.0.3
       - branca==0.8.1
