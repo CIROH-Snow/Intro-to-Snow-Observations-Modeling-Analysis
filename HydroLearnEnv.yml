@@ -209,7 +209,7 @@ dependencies:
       - pydantic-core==2.27.2
       - pygeoogc==0.18.0
       - pygeoutils==0.18.0
-      - pynhd==0.18.0
+      - pynhd==0.19.3
       - pyogrio==0.10.0
       - pyparsing==3.2.1
       - pyproj==3.7.0
