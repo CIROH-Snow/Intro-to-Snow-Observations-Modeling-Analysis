@@ -37,14 +37,22 @@ envs_dirs:
 ```
 Restart your server
 
-### Creating your HydrlearnSnowEnv Virtual Environment
+### Creating your HydroLearnEnv Virtual Environment
 Since we will be using Jupyter Notebooks for this exercise, we will use the Anaconda command prompt to create our virtual environment. 
 We suggest using Mamba rather than conda for installs, conda may be used but will take longer.
-In the command line type: 
 
-    mamba env create -f HydroLearnEnv.yml
+For the learning activity in **Section 3** (i.e., 3.4), in the command line type: 
+
+    mamba env create -f HydroLearnEnv.yml 
 
     conda activate HydroLearnEnv
 
-    python -m ipyk-ernel install -user --name=HydroLearnEnv --display-name "HydroLearnEnv"
+    python -m ipykernel install --user --name=HydroLearnEnv
 
+For the learning activity in **Section 4** (i.e., 4.5), in the command line type: 
+
+    mamba env create -f HydroLearnNWMEnv.yml 
+
+    conda activate HydroLearnNWMEnv
+
+    python -m ipykernel install --user --name=HydroLearnNWMEnv

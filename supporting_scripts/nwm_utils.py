@@ -531,12 +531,20 @@ def plot_grid_vector_data(ds_clip, data_var, time_index, shp, sites):
     clipped = da.rio.reproject("EPSG:4326")
     clipped = clipped.rename({'x': 'longitude', 'y': 'latitude'})
     hvplot_map = clipped.hvplot(
-        x='longitude', y='latitude',        # specify coordinate names for x and y axes
-        geo=True, project=True,             # treat axes as geographic coordinates
-        tiles=gts.ESRI,        
-        cmap='kbc', frame_height=400, alpha=0.6,
-        title='Modeled Snow Water Equivalent (mm)'
+        x='longitude',
+        y='latitude', 
+        geo=True,
+        project=True,
+        tiles=gts.ESRI,
+        cmap='kbc',
+        alpha=0.6,
+        frame_height=400,
+        title=f"Snow Water Equivalent, at {pd.to_datetime(time_index).strftime('%Y-%m-%d %H:%M')}",
+        clim=(0, 300)
     )
+    
+    shp = shp.to_crs("EPSG:4326").reset_index(drop=True)
+    sites = sites.to_crs("EPSG:4326").reset_index(drop=True)
 
     # Plot the shapefile outline
     shp_plot = shp.hvplot(
@@ -552,7 +560,7 @@ def plot_grid_vector_data(ds_clip, data_var, time_index, shp, sites):
     )
 
     # Combine the two by overlaying
-    combined_map = hvplot_map * shp_plot * points_plot
+    combined_map = (hvplot_map * shp_plot * points_plot).opts(framewise=True)
     
     return combined_map
 
