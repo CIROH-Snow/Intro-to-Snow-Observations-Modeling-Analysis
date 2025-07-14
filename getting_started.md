@@ -38,6 +38,7 @@ envs_dirs:
 Restart your server
 
 ### Creating your HydroLearnEnv Virtual Environment
+
 Since we will be using Jupyter Notebooks for this exercise, we will use the Anaconda command prompt to create our virtual environment. 
 We suggest using Mamba rather than conda for installs, conda may be used but will take longer.
 In the command line type: 
