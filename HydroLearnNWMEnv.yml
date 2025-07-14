@@ -1,0 +1,39 @@
+name: HydroLearnNWMEnv
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy=1.24
+  - pandas=1.5
+  - xarray=2023.1.0
+  - matplotlib
+  - bokeh>=3.2.0,<3.4.0
+  - holoviews=1.19.0
+  - geoviews=1.11.0
+  - panel=1.3.1
+  - hvplot=0.11.2
+  - param=2.0.1
+  - gdal=3.6.2
+  - geopandas=0.12.2
+  - rasterio=1.3.6
+  - fiona
+  - shapely
+  - scikit-learn
+  - netcdf4
+  - ipywidgets
+  - dask
+  - distributed
+  - jupyterlab
+  - jupyterlab_widgets
+  - nodejs
+  - rioxarray=0.15.1
+  - pyproj=3.5.0
+  - libtiff=4.5.0
+  - zarr=2.13.3
+  - s3fs=2023.6.0
+  - pip:
+      - hydroeval
+      - planetary-computer
+      - python-dotenv
+      - requests-cache

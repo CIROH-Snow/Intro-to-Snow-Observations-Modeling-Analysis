@@ -9,6 +9,9 @@ dependencies:
   - bzip2=1.0.8
   - c-ares=1.34.4
   - ca-certificates=2024.12.14
+  - dask
+  - dask-core
+  - distributed
   - dav1d=1.2.1
   - freexl=2.0.0
   - gdal=3.10.0
@@ -130,6 +133,7 @@ dependencies:
       - cytoolz==1.0.1
       - defusedxml==0.7.1
       - earthaccess==0.12.0
+      - exactextract==0.2.0
       - fasteners==0.19
       - fastjsonschema==2.21.1
       - fiona==1.10.1
@@ -141,8 +145,9 @@ dependencies:
       - geographiclib==2.0
       - geopandas==1.0.1
       - geopy==2.4.1
+      - geoviews @ git+https://github.com/holoviz/geoviews.git@main
       - h11==0.14.0
-      - holoviews==1.20.0
+      - holoviews==1.19.0
       - httpcore==1.0.7
       - httpx==0.28.1
       - hvplot==0.11.2
@@ -264,4 +269,3 @@ dependencies:
       - xyzservices==2024.9.0
       - yarl==1.18.3
       - zarr==2.18.3
-prefix: /home/whitelightning450/mambaforge/envs/HydroLearnEnv
